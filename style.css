@@ -1,0 +1,135 @@
+/* Color Palette:
+   Forest Green: #22573B
+   Ivory: #FFFFF0
+   Dark Text: #333333 
+*/
+
+/* Basic Reset and Typography */
+body {
+    margin: 0;
+    font-family: 'Lora', serif; /* Our elegant serif font from Google Fonts */
+    background-color: #FFFFF0; /* Ivory background */
+    color: #333333; /* Dark text for readability */
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: #22573B; /* Forest green links */
+}
+
+/* Re-usable container to center content */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: #FFFFF0; /* Ivory background */
+    border-bottom: 2px solid #22573B; /* Forest green border */
+    padding: 1rem 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between; /* Pushes logo left, nav right */
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #22573B; /* Forest green */
+}
+
+.navbar nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar nav li {
+    margin-left: 1.5rem;
+}
+
+.navbar nav a {
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+    color: #333333; /* Darken on hover */
+}
+
+/* Split Hero Section Styling */
+.hero-split {
+    padding: 4rem 0;
+}
+
+.hero-split .container {
+    display: flex; /* This creates the split layout */
+    align-items: center;
+    gap: 2rem; /* Adds space between the two columns */
+}
+
+/* Left Column */
+.hero-left {
+    flex: 1; /* Takes up 1 part of the available space */
+}
+
+.hero-left h1 {
+    font-size: 3rem;
+    color: #22573B; /* Forest green headline */
+    margin-bottom: 1rem;
+}
+
+.hero-left p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background-color: #22573B; /* Forest green */
+    color: #FFFFF0; /* Ivory text */
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #1a432d; /* A darker green for hover */
+}
+
+/* Right Column */
+.hero-right {
+    flex: 1; /* Takes up 1 part of the available space */
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.featured-book {
+    text-align: center;
+}
+
+.featured-book img {
+    border: 5px solid #22573B; /* Forest green border */
+    border-radius: 4px;
+    max-width: 150px;
+}
+
+.featured-book p {
+    font-weight: bold;
+    margin-top: 0.5rem;
+    color: #22573B;
+}
