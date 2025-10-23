@@ -3,50 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookstore Landing Page</title>
+    <title>The Ivory Leaf Bookstore</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Elegant Serif Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Color Palette: Forest green & ivory
+                        'forest': '#2A4D3E', // A deep, elegant forest green
+                        'ivory': '#FFFDF4',  // A warm, soft ivory
+                        'forest-light': '#4A8A70', // A lighter accent green
+                    },
+                    fontFamily: {
+                        // Typography: Elegant serif
+                        'serif': ['Playfair Display', 'serif'], // For headings
+                        'body': ['Lora', 'serif'],           // For body text
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Apply base font for calm reading aesthetic */
+        body {
+            @apply font-body bg-ivory text-forest;
+        }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <header class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">Bookstore</a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#shop">Shop</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+    <!-- Header & Navigation -->
+    <header class="bg-ivory/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-3xl font-serif font-bold text-forest">
+                The Ivory Leaf
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="font-body text-base text-forest hover:text-forest-light transition-colors">Home</a>
+                <a href="#shop" class="font-body text-base text-forest hover:text-forest-light transition-colors">Shop</a>
+                <a href="#blog" class="font-body text-base text-forest hover:text-forest-light transition-colors">Blog</a>
+                <a href="#contact" class="font-body text-base text-forest hover:text-forest-light transition-colors">Contact</a>
+            </div>
+            
+            <!-- Cart Icon -->
+            <a href="#" class="hidden md:block text-forest hover:text-forest-light transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-forest z-50">
+                <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+                <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-0 left-0 w-full h-screen bg-ivory pt-24 pb-8 transition-transform duration-300 ease-in-out transform -translate-x-full">
+            <div class="flex flex-col items-center justify-center space-y-8 h-full">
+                <a href="#" class="font-serif text-3xl text-forest hover:text-forest-light transition-colors">Home</a>
+                <a href="#shop" class="font-serif text-3xl text-forest hover:text-forest-light transition-colors">Shop</a>
+                <a href="#blog" class="font-serif text-3xl text-forest hover:text-forest-light transition-colors">Blog</a>
+                <a href="#contact" class="font-serif text-3xl text-forest hover:text-forest-light transition-colors">Contact</a>
+                <a href="#" class="mt-8 font-body text-lg text-forest hover:text-forest-light transition-colors">My Cart</a>
+            </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
-        <section class="hero-split">
-            <div class="container">
-                <div class="hero-left">
-                    <h1>Find Your Next Great Read.</h1>
-                    <p>Discover worlds of adventure, romance, and mystery. A calm reading experience awaits.</p>
-                    <a href="#shop" class="cta-button">Browse Featured Books</a>
+        <!-- Hero Section: Split hero with featured books -->
+        <section class="container mx-auto px-6 py-16 md:py-32 overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Left Side: Text -->
+                <div class="text-center md:text-left">
+                    <h1 class="font-serif font-black text-5xl md:text-7xl leading-tight mb-6">
+                        Find Your Calm.
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-10 max-w-lg mx-auto md:mx-0">
+                        Welcome to a quiet corner for book lovers. Discover curated collections that soothe the soul and inspire the mind. A calm reading aesthetic awaits.
+                    </p>
+                    <a href="#shop" class="inline-block bg-forest text-ivory font-body font-bold py-4 px-10 rounded-full text-lg shadow-lg hover:bg-forest-light transition-all duration-300 transform hover:scale-105">
+                        Browse Collection
+                    </a>
                 </div>
                 
-                <div class="hero-right">
-                    <div class="featured-book">
-                        <img src="https://via.placeholder.com/150x220" alt="Book Cover 1">
-                        <p>Book Title 1</p>
+                <!-- Right Side: Featured Books -->
+                <div class="relative w-full h-96 md:h-auto md:aspect-[4/3]">
+                    <!-- Book 1 (Large, back) -->
+                    <img src="https://placehold.co/400x600/2A4D3E/FFFDF4?text=Featured+Book" alt="Featured Book" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 md:w-64 rounded-lg shadow-2xl z-10 transform -rotate-6 hover:rotate-0 hover:scale-105 hover:z-30 transition-all duration-500 ease-in-out">
+                    
+                    <!-- Book 2 (Medium, left) -->
+                    <img src="https://placehold.co/400x600/4A8A70/FFFDF4?text=Book+Title" alt="Featured Book" class="absolute top-1/2 left-1/4 -translate-y-1/2 w-44 md:w-56 rounded-lg shadow-xl z-20 transform rotate-12 hover:rotate-0 hover:scale-105 hover:z-30 transition-all duration-500 ease-in-out">
+                    
+                    <!-- Book 3 (Medium, right) -->
+                    <img src="https://placehold.co/400x600/BFBBAF/2A4D3E?text=New+Arrival" alt="Featured Book" class="absolute top-1/2 left-3/4 -translate-x-3/4 -translate-y-1/2 w-44 md:w-56 rounded-lg shadow-xl z-0 transform rotate-3 hover:rotate-0 hover:scale-105 hover:z-30 transition-all duration-500 ease-in-out">
+                </div>
+            </div>
+        </section>
+
+        <!-- Shop Section -->
+        <section id="shop" class="bg-white py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-center mb-16">
+                    New & Noteworthy
+                </h2>
+                
+                <!-- Book Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                    <!-- Book Card 1 -->
+                    <div class="bg-ivory/60 p-5 rounded-lg shadow-lg text-center transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <a href="#">
+                            <img src="https://placehold.co/400x600/2A4D3E/FFFDF4?text=The+Silent+Forest" alt="Book Cover" class="w-full h-auto rounded-md mb-5 shadow-md">
+                            <h3 class="font-serif font-bold text-xl mb-1">The Silent Forest</h3>
+                            <p class="font-body text-gray-600 mb-4">By Elena Vance</p>
+                            <span class="font-body font-bold text-lg text-forest-light">$18.99</span>
+                        </a>
                     </div>
-                    <div class="featured-book">
-                        <img src="https://via.placeholder.com/150x220" alt="Book Cover 2">
-                        <p>Book Title 2</p>
+                    
+                    <!-- Book Card 2 -->
+                    <div class="bg-ivory/60 p-5 rounded-lg shadow-lg text-center transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <a href="#">
+                            <img src="https://placehold.co/400x600/4A8A70/FFFDF4?text=Ivory+Pages" alt="Book Cover" class="w-full h-auto rounded-md mb-5 shadow-md">
+                            <h3 class="font-serif font-bold text-xl mb-1">Ivory Pages</h3>
+                            <p class="font-body text-gray-600 mb-4">By Arthur Finn</p>
+                            <span class="font-body font-bold text-lg text-forest-light">$22.50</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Book Card 3 -->
+                    <div class="bg-ivory/60 p-5 rounded-lg shadow-lg text-center transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <a href="#">
+                            <img src="https://placehold.co/400x600/BFBBAF/2A4D3E?text=Reading+Calm" alt="Book Cover" class="w-full h-auto rounded-md mb-5 shadow-md">
+                            <h3 class="font-serif font-bold text-xl mb-1">Reading Calm</h3>
+                            <p class="font-body text-gray-600 mb-4">By Dr. Anna Reid</p>
+                            <span class="font-body font-bold text-lg text-forest-light">$16.00</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Book Card 4 -->
+                    <div class="bg-ivory/60 p-5 rounded-lg shadow-lg text-center transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <a href="#">
+                            <img src="https://placehold.co/400x600/8C6D4A/FFFDF4?text=The+Librarian" alt="Book Cover" class="w-full h-auto rounded-md mb-5 shadow-md">
+                            <h3 class="font-serif font-bold text-xl mb-1">The Librarian</h3>
+                            <p class="font-body text-gray-600 mb-4">By Marcus Cole</p>
+                            <span class="font-body font-bold text-lg text-forest-light">$20.00</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-16">
+                    <a href="#" class="inline-block bg-forest-light text-ivory font-body font-bold py-3 px-8 rounded-full text-base shadow-lg hover:bg-forest transition-all duration-300 transform hover:scale-105">
+                        Shop All Books
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Blog Section -->
+        <section id="blog" class="bg-ivory py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-center mb-16">
+                    From Our Blog
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- Blog Post 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <a href="#">
+                            <img src="https://placehold.co/600x400/4A8A70/FFFDF4?text=The+Art+of+Reading" alt="Blog post image" class="w-full h-56 object-cover">
+                            <div class="p-8">
+                                <h3 class="font-serif font-bold text-2xl mb-3">The Art of Slow Reading</h3>
+                                <p class="font-body text-gray-700 mb-5">In a fast-paced world, rediscovering the joy of slow, mindful reading can be a profound experience...</p>
+                                <span class="font-body font-semibold text-forest-light hover:underline">Read More &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Blog Post 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <a href="#">
+                            <img src="https://placehold.co/600x400/2A4D3E/FFFDF4?text=Cozy+Reading+Nook" alt="Blog post image" class="w-full h-56 object-cover">
+                            <div class="p-8">
+                                <h3 class="font-serif font-bold text-2xl mb-3">Creating Your Perfect Reading Nook</h3>
+                                <p class="font-body text-gray-700 mb-5">Find out how to design a small, cozy space in your home dedicated to the simple pleasure of reading...</p>
+                                <span class="font-body font-semibold text-forest-light hover:underline">Read More &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Blog Post 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <a href="#">
+                            <img src="https://placehold.co/600x400/BFBBAF/2A4D3E?text=Staff+Picks" alt="Blog post image" class="w-full h-56 object-cover">
+                            <div class="p-8">
+                                <h3 class="font-serif font-bold text-2xl mb-3">Staff Picks: Our Favorites This Fall</h3>
+                                <p class="font-body text-gray-700 mb-5">The air is crisp, and our team is excited to share the books we can't put down this season...</p>
+                                <span class="font-body font-semibold text-forest-light hover:underline">Read More &rarr;</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-forest text-ivory py-20 md:py-28">
+            <div class="container mx-auto px-6 max-w-3xl text-center">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6">
+                    Stay in Touch
+                </h2>
+                <p class="font-body text-lg text-ivory/80 mb-10">
+                    Subscribe to our newsletter for updates on new arrivals, special offers, and blog posts from our community of readers.
+                </WELCOME>
+                <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" placeholder="Enter your email address" class="w-full flex-grow p-4 rounded-full font-body text-forest placeholder:text-gray-500 focus:outline-none focus:ring-4 focus:ring-forest-light/50" required>
+                    <button type="submit" class="bg-ivory text-forest font-body font-bold py-4 px-8 rounded-full shadow-lg hover:bg-white transition-all duration-300 transform hover:scale-105">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+                <!-- Brand -->
+                <div>
+                    <a href="#" class="text-2xl font-serif font-bold text-forest mb-4 inline-block">
+                        The Ivory Leaf
+                    </a>
+                    <p class="font-body text-gray-600 text-sm">
+                        A calm reading aesthetic.
+                    </p>
+                </div>
+                
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="font-serif font-bold text-lg mb-4">Explore</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#shop" class="font-body text-gray-600 hover:text-forest">New Arrivals</a></li>
+                        <li><a href="#" class="font-body text-gray-600 hover:text-forest">Bestsellers</a></li>
+                        <li><a href="#" class="font-body text-gray-600 hover:text-forest">Genres</a></li>
+                        <li><a href="#" class="font-body text-gray-600 hover:text-forest">Gift Cards</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="font-serif font-bold text-lg mb-4">About</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#blog" class="font-body text-gray-600 hover:text-forest">Our Blog</a></li>
+                        <li><a href="#" class="font-body text-gray-600 hover:text-forest">Our Story</a></li>
+                        <li><a href="#contact" class="font-body text-gray-600 hover:text-forest">Contact Us</a></li>
+                        <li><a href="#" class="font-body text-gray-600 hover:text-forest">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Social -->
+                <div>
+                    <h4 class="font-serif font-bold text-lg mb-4">Follow Us</h4>
+                    <div class="flex justify-center md:justify-start space-x-6">
+                        <a href="#" class="text-gray-500 hover:text-forest" aria-label="Pinterest">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.143 2.56 7.688 6.138 9.204.093-.63.023-1.374-.176-2.016-.217-.71-.13-1.58.25-2.228.38-.648 1.13-1.85 1.13-3.148 0-2.92-2.14-5.118-4.83-5.118-3.41 0-5.73 2.57-5.73 5.4 0 1.17.43 2.43.98 3.09.11.13.12.25.09.39-.08.38-.26 1.05-.3 1.23-.05.21-.18.26-.38.16-1.58-.78-2.58-2.82-2.58-4.64 0-3.72 2.78-7.1 7.7-7.1 4.13 0 7.23 2.91 7.23 6.42 0 4.1-2.22 7.2-5.32 7.2-1.07 0-2.08-.55-2.44-1.18 0 0-.54 2.15-.67 2.67-.2 1.02-.78 2.33-1.14 3.12C10.05 21.58 10.99 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-forest" aria-label="Instagram">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 16c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm6.5-3c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5S19.328 5 18.5 5z" clip-rule="evenodd" /></svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-forest" aria-label="Twitter">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-200 text-center">
+                <p class="font-body text-gray-500 text-sm">&copy; 2025 The Ivory Leaf Bookstore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // JavaScript for Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            
+            if (isHidden) {
+                // Show menu
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('-translate-x-full');
+                }, 20); // Short delay to allow display:block to register before transition
+                
+                iconOpen.classList.add('hidden');
+                iconClose.classList.remove('hidden');
+                // Prevent body scrolling
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Hide menu
+                mobileMenu.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300); // Wait for transition to finish
+                
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                // Restore body scrolling
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close mobile menu when a link is clicked
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                menuBtn.click();
+            }
+        });
+    </script>
 
 </body>
 </html>
+
